@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Django Template with Two Textboxes</title>
+     <style>
+          body {
+               background-color: aqua;
+               /* margin-left: 500px; */
+               text-align: center;
+
+               /* margin-top: 200px; */
+
+          }
+
+          h2 {
+               text-decoration: underline;
+               color: black;
+               font-family: 'Courier New', Courier, monospace;
+               font-size: 30px;
+          }
+
+          p {
+               color: black;
+               font-family: 'Courier New', Courier, monospace;
+               font-size: 30px;
+               opacity: .5;
+          }
+
+          .container {
+               text-align: center;
+          }
+
+          .container textarea {
+               height: 30vh;
+               width: 30%;
+          }
+
+          #inputTextbox {
+               font-size: 15px;
+          }
+
+          .btn {
+               width: 5%;
+               height: 45px;
+               border-radius: 40px;
+               border: none;
+               outline: none;
+               background: #fff;
+               box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+               cursor: pointer;
+               font-size: 16px;
+               color: #333;
+               font-weight: 600;
+          }
+     </style>
+</head>
+
+<body>
+     <button class="btn"> <a href="{% url 'dashboard' %}">Go Back</a></button>
+     <h2>Grammar and Spelling Checker</h2>
+     <p>Input and Output Textboxes</p>
+     <div class="container">
+          <form method="post" action="{% url 'grammar_spell_checker' %}">
+               {% csrf_token %}
+               <!-- Input Textbox -->
+               <label for="inputTextbox">Input:</label>
+               <textarea id="inputTextbox" placeholder="Enter your text to check." name="inputTextbox" rows="4"
+                    cols="50" required>{{ previous_sent }}</textarea>
+
+               <!-- Output Textbox -->
+               <label for="outputTextbox">Output:</label>
+               <textarea id="outputTextbox" name="outputTextbox" placeholder="Output will be reflect here." rows="4"
+                    cols="50" readonly>{{ new_sent }}</textarea>
+               <button type="submit" class="btn">Submit</button>
+          </form>
+          </form>
+     </div>
+     <script>
+          document.getElementById('inputTextbox').addEventListener('focus', function () {
+               document.getElementById('outputTextbox').value = '';
+               document.getElementById('inputTextbox').value = '';
+          });
+          document.addEventListener('DOMContentLoaded', function () {
+               var textbox = document.getElementById('inputTextbox');
+               var textbox1 = document.getElementById('outputTextbox');
+               if (textbox.value.toLowerCase() === 'none') {
+                    textbox.value = '';
+               }
+               if (textbox1.value.toLowerCase() === 'none') {
+                    textbox1.value = '';
+               }
+          });
+     </script>
+</body>
+
+</html>

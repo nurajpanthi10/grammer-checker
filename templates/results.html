@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <title>Grammarly - Results</title>
+</head>
+
+<body>
+     <h1>Corrected Sentences</h1>
+     <ul>
+          {% for sentence in corrected_sentences %}
+          <li>{{ sentence.corrected_text }}</li>
+          {% endfor %}
+     </ul>
+</body>
+
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+          body {
+               display: grid;
+               background-color: #aaa;
+               font-family: Oxygen, sans-serif;
+
+          }
+
+          @media screen and (min-width: 900px) {
+               body {
+                    grid-template-rows: 60px 1fr;
+                    grid-template-columns: 250px 1fr;
+                    grid-template-areas: "header nav"
+                         "aside  main";
+               }
+          }
+
+
+          @media screen and (min-width: 900px) {
+               nav {
+                    justify-content: inherit;
+               }
+
+               .nav__item--last-left {
+                    margin-right: auto;
+               }
+          }
+
+          main {
+               grid-area: main;
+               display: grid;
+               grid-gap: 1em;
+               grid-template-columns: repeat(3, 1fr);
+               grid-template-rows: 20px 120px 20px 2fr 1fr;
+          }
+
+          .content-title {
+               background-color: #51d6a7;
+               grid-column: 1 / 4;
+               display: flex;
+               align-items: center;
+          }
+
+
+          .pill-wrapper {
+               grid-column: 1 / 4;
+               display: grid;
+               grid-template-columns: repeat(3, 1fr);
+               grid-gap: 1em;
+               margin: 20px;
+               padding: 20px;
+          }
+
+          @media screen and (min-width: 900px) {
+               aside {
+                    flex-direction: column;
+                    justify-content: start;
+               }
+          }
+
+          body>* {
+               color: black;
+               font-weight: 100;
+               font-size: 1rem;
+          }
+
+          h3 {
+               height: 1em;
+               padding-left: 1em;
+               font-size: 1rem;
+               border-bottom: 1px solid #ddd;
+               padding-bottom: 1em;
+          }
+
+          ul {
+               list-style: none;
+               padding: 0;
+               margin: 0;
+          }
+
+          main {
+               background-color: var(--main);
+          }
+
+          .content-title {
+               background-color: inherit;
+          }
+
+          .content-title h2 {
+               font-size: 1rem;
+               width: 120px;
+          }
+
+          .content-title i {
+               font-size: 0.7rem;
+          }
+
+          .filter {
+               margin-left: auto;
+               align-items: center;
+               margin-right: 1rem;
+          }
+
+          .filter__item {
+               background-color: #ddd;
+               padding: 4px 10px;
+               font-size: 0.8rem;
+               border-radius: 30px;
+          }
+
+          button {
+               /* border-color: var(--header); */
+               border-radius: 5px;
+               padding: 7px 20px;
+               font-size: 1rem;
+          }
+
+          main>* {
+               background-color: white;
+               border-radius: 5px;
+          }
+
+
+          .pill-wrapper {
+               background-color: transparent;
+          }
+
+          .pill {
+               background-color: #4376F6;
+               border-radius: 10px;
+               color: white;
+               align-items: center;
+               font-size: 0.8rem;
+               margin: 5px;
+               padding: 15px;
+          }
+
+          .pill:nth-child(2) {
+               background-color: #e48e0b;
+          }
+
+          .pill:nth-child(3) {
+               background-color: #51d6a7;
+          }
+
+          .pill {
+               align-items: center;
+               font-size: 1.2rem;
+          }
+
+          .pill__icon {
+               padding-left: 1.5em;
+          }
+
+          .pill__date {
+               font-size: 0.7rem;
+               color: rgba(255, 255, 255, 0.7);
+          }
+
+          .pill__title {
+               padding: 0.2rem 0;
+               font-weight: bold;
+          }
+
+          .pill__content {
+               padding: 1.5em;
+          }
+
+          .pill__value {
+               font-size: 1.8em;
+          }
+     </style>
+</head>
+
+<body>
+     <main>
+          <div class="content-title">
+               <h1 style="text-align: center; width: 100%; color: white;">Welcome to the dashboard.</h1><i
+                    class="fa fa-angle-right"></i>
+               <div class="filter">
+               </div>
+               <button> <a href="{% url 'logout' %}">Logout</a></button>
+          </div>
+          <div class="pill-wrapper">
+               <div class="pill">
+                    <i class="pill__icon fa fa-user"></i>
+                    <a href="{% url 'grammar_spell_checker' %}">
+                         <h2><u>Grammer and Spell Checker</u></h2>
+                         <p>
+                              spelling and grammar checkers, computer programs that identify apparent misspellings and
+                              grammatical errors by reference to an incorporated dictionary and a list of rules for
+                              proper
+                              usage.
+                         </p>
+                    </a>
+               </div>
+
+               <div class="pill">
+                    <i class="pill__icon fa fa-user"></i>
+                    <a href="{% url 'paraphrasing' %}">
+                         <h2><u>Paraphrase</u></h2>
+                         <p>
+                              spelling and grammar checkers, computer programs that identify apparent misspellings and
+                              grammatical errors by reference to an incorporated dictionary and a list of rules for
+                              proper
+                              usage.
+                         </p>
+                    </a>
+               </div>
+
+               <!-- <div class="pill">
+                    <i class="pill__icon fa fa-user"></i>
+                    <h2><u>Grammer and Spell Checker</u></h2>
+                    <p>
+                         spelling and grammar checkers, computer programs that identify apparent misspellings and
+                         grammatical errors by reference to an incorporated dictionary and a list of rules for proper
+                         usage.
+                    </p>
+               </div> -->
+          </div>
+</body>
+
+</html>
